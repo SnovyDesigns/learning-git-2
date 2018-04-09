@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Hi+Melody|Jua');
+
+$html-fs: 10px;
+
+$base-ff: 'Hi Melody', cursive;
+$base-fs: 1.9rem;
+$base-fw: 400;
+$base-lh: 1.6;
+$base-tc: #2f3640;
+
+$second-ff: 'Hi Melody', cursive;
+$second-fw: 400;
+$second-lh: 1.8;
+
+$white: #ffffff;
+$dwhite: #f5f6fa;
+$lgreen: #4cd137;
+$red: #e84118;
+$border: #353b48;
+
+
+// BASE SIZE
+html {
+	font-size: $html-fs;
+}
+
+body {
+    font-family: $base-ff;
+    font-size: $base-fs;
+    font-weight: $base-fw;
+	line-height: $base-lh;
+    display: flex;
+    justify-content: center;
+}
+
+h1, h2 {
+	font-family: $second-ff;
+	margin: 0;
+	text-align: center;
+	color: $white;
+	border-bottom: 1px solid $border;
+}
+
+iframe {
+	max-width: 100%;
+}
+
+main {
+	display: grid;
+	grid-template-columns: repeat(2, 50%);
+	background-color: $dwhite;
+	border: 2px solid $border;
+}
+.text {
+	border-right: 2px solid $border;
+	h1 {
+		background-color: $lgreen;
+		font-size: 4rem;
+	}
+	p {
+		margin: 1rem;
+	} 	
+}
+
+.video {
+	h1 {
+		background-color: $red;
+		font-size: 4rem;
+	}
+}
