@@ -4,7 +4,22 @@
   "description": "https://snovydesigns.github.io/learning-git-2/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test:html",
+    "test:html": "nu-html-checker *.html",
+    "init-project": "npm install && npm-run-all init:*",
+    "init-project:dirs": "mkdir -p sass css vendor images js ",
+    "init-project:files": "touch README.md index.html sass/style.scss js/script.js",
+    "init-project:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "build": "npm-run-all build:* test",
+    "build:clean": "rm -rf css",
+    "build:sass": "node-sass --output-style compact -o css sass",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch": "npm-run-all build --parallel watch:* ",
+    "watch:sassprefixer": "onchange sass/style*.scss -- npm-run-all sass autoprefixer",
+    "sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "autoprefixer": "autoprefixer-cli css/style*.css",
+    "watch:browsersync": "browser-sync start --server --files 'css/*.css' '*.html'"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +27,11 @@
   "devDependencies": {
     "autoprefixer-cli": "^1.0.0",
     "browser-sync": "^2.23.6",
-    "nu-html-checker": "^0.1.0"
+    "node-sass": "^4.8.3",
+    "npm-run-all": "^4.1.2",
+    "nu-html-checker": "^0.1.0",
+    "onchange": "^3.3.0",
+    "rimraf": "^2.6.2"
   },
   "dependencies": {},
   "repository": {
